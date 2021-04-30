@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     //テスト
+    //テストSession1
     var window: UIWindow?
 
 
