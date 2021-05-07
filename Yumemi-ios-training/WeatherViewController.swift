@@ -27,6 +27,6 @@ class WeatherViewController: UIViewController {
 
 extension WeatherViewController: WeatherDelegate {
     func reload() {
-        weatherModel?.reload(imageView: weatherView.weatherImageView)
+        weatherModel?.reload(imageView: weatherView.weatherImageView, controller: self)
     }
 }
