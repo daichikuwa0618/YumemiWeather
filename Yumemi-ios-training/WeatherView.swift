@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YumemiWeather
 
 class WeatherView: UIView {
     
@@ -105,5 +106,18 @@ class WeatherView: UIView {
     
     private func setupReloadButton() {
         reloadButton.setTitle("Reload", for: .normal)
+        reloadButton.addTarget(self, action: #selector(reload), for: .touchUpInside)
+    }
+    
+    @objc func reload() {
+        let weatherString = YumemiWeather.fetchWeather()
+        switch weatherString {
+        case "sunny":
+            weatherImageView.image = UIImage(named: "sunny")
+        case "rainy":
+            weatherImageView.image = UIImage(named: "rainy")
+        default:
+            weatherImageView.image = UIImage(named: "cloudy")
+        }
     }
 }
