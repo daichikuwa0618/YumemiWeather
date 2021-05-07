@@ -14,6 +14,8 @@ class WeatherView: UIView {
     let stackViewForLabels = UIStackView()
     let lowestTemperatureLabel = UILabel()
     let highestTemparatureLabel = UILabel()
+    let closeButton = UIButton(type: .system)
+    let reloadButton = UIButton(type: .system)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +26,8 @@ class WeatherView: UIView {
         addSubviewConstraints()
         setupLowestTemperatureLabel()
         setupHighestTemperatureLabel()
+        setupCloseButton()
+        setupReloadButton()
     }
     
     required init?(coder: NSCoder) {
@@ -46,10 +50,26 @@ class WeatherView: UIView {
         ])
         
         addSubview(stackViewForLabels)
+        
         stackViewForLabels.addArrangedSubview(lowestTemperatureLabel)
         stackViewForLabels.addArrangedSubview(highestTemparatureLabel)
+        
+        NSLayoutConstraint.activate([
+            lowestTemperatureLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25),
+            highestTemparatureLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25),
+        ])
         stackViewForImageViewAndLabels.addArrangedSubview(stackViewForLabels)
         
+        addSubview(closeButton)
+        addSubview(reloadButton)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        reloadButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            closeButton.centerXAnchor.constraint(equalTo: lowestTemperatureLabel.centerXAnchor),
+            closeButton.topAnchor.constraint(equalTo: stackViewForImageViewAndLabels.bottomAnchor, constant: 80),
+            reloadButton.centerXAnchor.constraint(equalTo: highestTemparatureLabel.centerXAnchor),
+            reloadButton.topAnchor.constraint(equalTo: stackViewForLabels.bottomAnchor, constant: 80)
+        ])
     }
     
     private func setupstackViewForImageViewAndLabels() {
@@ -78,5 +98,13 @@ class WeatherView: UIView {
         highestTemparatureLabel.text = "35"
         highestTemparatureLabel.textColor = .systemRed
         highestTemparatureLabel.textAlignment = .center
+    }
+    
+    private func setupCloseButton() {
+        closeButton.setTitle("Close", for: .normal)
+    }
+    
+    private func setupReloadButton() {
+        reloadButton.setTitle("Reload", for: .normal)
     }
 }
