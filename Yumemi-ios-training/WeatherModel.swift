@@ -10,17 +10,22 @@ import YumemiWeather
 
 struct WeatherModel {
     func reload(imageView: UIImageView) {
-        let weatherString = YumemiWeather.fetchWeather()
-        switch weatherString {
-        case "sunny":
-            imageView.image = UIImage(named: "sunny")?.withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = .systemRed
-        case "rainy":
-            imageView.image = UIImage(named: "rainy")?.withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = .systemBlue
-        default:
-            imageView.image = UIImage(named: "cloudy")?.withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = .systemGray
+        do {
+            let weatherString = try YumemiWeather.fetchWeather(at: "tokyo")
+            switch weatherString {
+            case "sunny":
+                imageView.image = UIImage(named: "sunny")?.withRenderingMode(.alwaysTemplate)
+                imageView.tintColor = .systemRed
+            case "rainy":
+                imageView.image = UIImage(named: "rainy")?.withRenderingMode(.alwaysTemplate)
+                imageView.tintColor = .systemBlue
+            default:
+                imageView.image = UIImage(named: "cloudy")?.withRenderingMode(.alwaysTemplate)
+                imageView.tintColor = .systemGray
+            }
+            
+        } catch {
+            print("error")
         }
     }
 }
