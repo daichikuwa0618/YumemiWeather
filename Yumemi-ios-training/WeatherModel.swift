@@ -13,11 +13,14 @@ struct WeatherModel {
         let weatherString = YumemiWeather.fetchWeather()
         switch weatherString {
         case "sunny":
-            imageView.image = UIImage(named: "sunny")
+            imageView.image = UIImage(named: "sunny")?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = .systemRed
         case "rainy":
-            imageView.image = UIImage(named: "rainy")
+            imageView.image = UIImage(named: "rainy")?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = .systemBlue
         default:
-            imageView.image = UIImage(named: "cloudy")
+            imageView.image = UIImage(named: "cloudy")?.withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = .systemGray
         }
     }
 }
