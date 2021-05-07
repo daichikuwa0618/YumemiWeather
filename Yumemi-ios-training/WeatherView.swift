@@ -20,18 +20,22 @@ class WeatherView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        setupstackViewForImageViewAndLabels()
-        setupstackViewForLabels()
-        setupWeatherImage()
+        setup()
         addSubviewConstraints()
-        setupLowestTemperatureLabel()
-        setupHighestTemperatureLabel()
-        setupCloseButton()
-        setupReloadButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setup() {
+        setupstackViewForImageViewAndLabels()
+        setupstackViewForLabels()
+        setupWeatherImage()
+        setupLowestTemperatureLabel()
+        setupHighestTemperatureLabel()
+        setupCloseButton()
+        setupReloadButton()
     }
     
     private func addSubviewConstraints() {
@@ -53,11 +57,6 @@ class WeatherView: UIView {
         
         stackViewForLabels.addArrangedSubview(lowestTemperatureLabel)
         stackViewForLabels.addArrangedSubview(highestTemparatureLabel)
-        
-        NSLayoutConstraint.activate([
-            lowestTemperatureLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25),
-            highestTemparatureLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25),
-        ])
         stackViewForImageViewAndLabels.addArrangedSubview(stackViewForLabels)
         
         addSubview(closeButton)
