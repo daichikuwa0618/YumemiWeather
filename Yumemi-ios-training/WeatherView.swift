@@ -29,8 +29,8 @@ class WeatherView: UIView {
     }
     
     private func setup() {
-        setupstackViewForImageViewAndLabels()
-        setupstackViewForLabels()
+        setupStackViewForImageViewAndLabels()
+        setupStackViewForLabels()
         setupWeatherImage()
         setupLowestTemperatureLabel()
         setupHighestTemperatureLabel()
@@ -39,26 +39,26 @@ class WeatherView: UIView {
     }
     
     private func addSubviewConstraints() {
+        //天気を表示するimageViewと気温を表示するlabelを入れるためのStackViewの追加と制約
         addSubview(stackViewForImageViewAndLabels)
         stackViewForImageViewAndLabels.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackViewForImageViewAndLabels.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackViewForImageViewAndLabels.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
-        
+        //天気を表示するimageViewの追加と制約
         stackViewForImageViewAndLabels.addArrangedSubview(weatherImageView)
         weatherImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             weatherImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
             weatherImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
         ])
-        
+        //最低/最高気温を表示するlabelの追加と制約
         addSubview(stackViewForLabels)
-        
         stackViewForLabels.addArrangedSubview(lowestTemperatureLabel)
         stackViewForLabels.addArrangedSubview(highestTemparatureLabel)
         stackViewForImageViewAndLabels.addArrangedSubview(stackViewForLabels)
-        
+        //close/reloadボタンの追加と制約
         addSubview(closeButton)
         addSubview(reloadButton)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -71,13 +71,13 @@ class WeatherView: UIView {
         ])
     }
     
-    private func setupstackViewForImageViewAndLabels() {
+    private func setupStackViewForImageViewAndLabels() {
         stackViewForImageViewAndLabels.axis = .vertical
         stackViewForImageViewAndLabels.alignment = .fill
         stackViewForImageViewAndLabels.distribution = .fill
     }
     
-    private func setupstackViewForLabels() {
+    private func setupStackViewForLabels() {
         stackViewForLabels.axis = .horizontal
         stackViewForLabels.alignment = .fill
         stackViewForLabels.distribution = .fillEqually
