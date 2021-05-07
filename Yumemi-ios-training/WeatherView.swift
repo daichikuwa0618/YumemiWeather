@@ -10,6 +10,7 @@ import YumemiWeather
 
 class WeatherView: UIView {
     
+    var delegate: WeatherDelegate?
     let stackViewForImageViewAndLabels = UIStackView()
     let weatherImageView = UIImageView()
     let stackViewForLabels = UIStackView()
@@ -85,7 +86,7 @@ class WeatherView: UIView {
     }
     
     private func setupWeatherImage() {
-        weatherImageView.image = UIImage(systemName: "sun.max")
+        weatherImageView.image = UIImage(named: "sun")
     }
     
     private func setupLowestTemperatureLabel() {
@@ -110,14 +111,6 @@ class WeatherView: UIView {
     }
     
     @objc func reload() {
-        let weatherString = YumemiWeather.fetchWeather()
-        switch weatherString {
-        case "sunny":
-            weatherImageView.image = UIImage(named: "sunny")
-        case "rainy":
-            weatherImageView.image = UIImage(named: "rainy")
-        default:
-            weatherImageView.image = UIImage(named: "cloudy")
-        }
+        delegate?.reload()
     }
 }
