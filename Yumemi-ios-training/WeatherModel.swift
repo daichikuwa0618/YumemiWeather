@@ -9,7 +9,7 @@ import UIKit
 import YumemiWeather
 
 struct WeatherModel {
-    func reload(imageView: UIImageView) {
+    func reload(imageView: UIImageView, controller: UIViewController) {
         do {
             let weatherString = try YumemiWeather.fetchWeather(at: "tokyo")
             switch weatherString {
@@ -25,7 +25,10 @@ struct WeatherModel {
             }
             
         } catch {
-            print("error")
+            let errorAlert = UIAlertController(title: "エラー", message: "エラーが発生しました", preferredStyle: .alert)
+            let errorAction = UIAlertAction(title: "OK", style: .default)
+            errorAlert.addAction(errorAction)
+            controller.present(errorAlert, animated: true, completion: nil)
         }
     }
 }
