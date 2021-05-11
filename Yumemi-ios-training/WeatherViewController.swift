@@ -7,7 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
+    
+    private(set) var weatherView = WeatherView()
+    
+    override func loadView() {
+        view = weatherView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
