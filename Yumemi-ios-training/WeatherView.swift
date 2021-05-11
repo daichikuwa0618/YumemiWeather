@@ -13,7 +13,7 @@ class WeatherView: UIView {
     let weatherImageView = UIImageView()
     let stackViewForLabels = UIStackView()
     let lowestTemperatureLabel = UILabel()
-    let highestTemparatureLabel = UILabel()
+    let highestTemperatureLabel = UILabel()
     let closeButton = UIButton(type: .system)
     let reloadButton = UIButton(type: .system)
     
@@ -56,7 +56,7 @@ class WeatherView: UIView {
         //最低/最高気温を表示するlabelの追加と制約
         addSubview(stackViewForLabels)
         stackViewForLabels.addArrangedSubview(lowestTemperatureLabel)
-        stackViewForLabels.addArrangedSubview(highestTemparatureLabel)
+        stackViewForLabels.addArrangedSubview(highestTemperatureLabel)
         stackViewForImageViewAndLabels.addArrangedSubview(stackViewForLabels)
         //close/reloadボタンの追加と制約
         addSubview(closeButton)
@@ -66,7 +66,7 @@ class WeatherView: UIView {
         NSLayoutConstraint.activate([
             closeButton.centerXAnchor.constraint(equalTo: lowestTemperatureLabel.centerXAnchor),
             closeButton.topAnchor.constraint(equalTo: stackViewForImageViewAndLabels.bottomAnchor, constant: 80),
-            reloadButton.centerXAnchor.constraint(equalTo: highestTemparatureLabel.centerXAnchor),
+            reloadButton.centerXAnchor.constraint(equalTo: highestTemperatureLabel.centerXAnchor),
             reloadButton.topAnchor.constraint(equalTo: stackViewForLabels.bottomAnchor, constant: 80)
         ])
     }
@@ -94,9 +94,9 @@ class WeatherView: UIView {
     }
     
     private func setupHighestTemperatureLabel() {
-        highestTemparatureLabel.text = "35"
-        highestTemparatureLabel.textColor = .systemRed
-        highestTemparatureLabel.textAlignment = .center
+        highestTemperatureLabel.text = "35"
+        highestTemperatureLabel.textColor = .systemRed
+        highestTemperatureLabel.textAlignment = .center
     }
     
     private func setupCloseButton() {
