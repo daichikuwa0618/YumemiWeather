@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 //テスト
+    //ブランチ名を変更した(テスト)
 
 }
 
