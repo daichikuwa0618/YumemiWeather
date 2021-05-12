@@ -15,7 +15,7 @@ class WeatherView: UIView {
     let weatherImageView = UIImageView()
     let stackViewForLabels = UIStackView()
     let lowestTemperatureLabel = UILabel()
-    let highestTemparatureLabel = UILabel()
+    let highestTemperatureLabel = UILabel()
     let closeButton = UIButton(type: .system)
     let reloadButton = UIButton(type: .system)
     
@@ -31,8 +31,8 @@ class WeatherView: UIView {
     }
     
     private func setup() {
-        setupstackViewForImageViewAndLabels()
-        setupstackViewForLabels()
+        setupStackViewForImageViewAndLabels()
+        setupStackViewForLabels()
         setupWeatherImage()
         setupLowestTemperatureLabel()
         setupHighestTemperatureLabel()
@@ -58,7 +58,7 @@ class WeatherView: UIView {
         addSubview(stackViewForLabels)
         
         stackViewForLabels.addArrangedSubview(lowestTemperatureLabel)
-        stackViewForLabels.addArrangedSubview(highestTemparatureLabel)
+        stackViewForLabels.addArrangedSubview(highestTemperatureLabel)
         stackViewForImageViewAndLabels.addArrangedSubview(stackViewForLabels)
         
         addSubview(closeButton)
@@ -68,18 +68,18 @@ class WeatherView: UIView {
         NSLayoutConstraint.activate([
             closeButton.centerXAnchor.constraint(equalTo: lowestTemperatureLabel.centerXAnchor),
             closeButton.topAnchor.constraint(equalTo: stackViewForImageViewAndLabels.bottomAnchor, constant: 80),
-            reloadButton.centerXAnchor.constraint(equalTo: highestTemparatureLabel.centerXAnchor),
+            reloadButton.centerXAnchor.constraint(equalTo: highestTemperatureLabel.centerXAnchor),
             reloadButton.topAnchor.constraint(equalTo: stackViewForLabels.bottomAnchor, constant: 80)
         ])
     }
     
-    private func setupstackViewForImageViewAndLabels() {
+    private func setupStackViewForImageViewAndLabels() {
         stackViewForImageViewAndLabels.axis = .vertical
         stackViewForImageViewAndLabels.alignment = .fill
         stackViewForImageViewAndLabels.distribution = .fill
     }
     
-    private func setupstackViewForLabels() {
+    private func setupStackViewForLabels() {
         stackViewForLabels.axis = .horizontal
         stackViewForLabels.alignment = .fill
         stackViewForLabels.distribution = .fillEqually
@@ -96,9 +96,9 @@ class WeatherView: UIView {
     }
     
     private func setupHighestTemperatureLabel() {
-        highestTemparatureLabel.text = "35"
-        highestTemparatureLabel.textColor = .systemRed
-        highestTemparatureLabel.textAlignment = .center
+        highestTemperatureLabel.text = "35"
+        highestTemperatureLabel.textColor = .systemRed
+        highestTemperatureLabel.textAlignment = .center
     }
     
     private func setupCloseButton() {
