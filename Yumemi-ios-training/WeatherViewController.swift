@@ -10,6 +10,7 @@ import UIKit
 class WeatherViewController: UIViewController {
     
     private(set) var weatherView = WeatherView()
+    var weatherModel: WeatherModel?
     
     override func loadView() {
         view = weatherView
@@ -17,6 +18,7 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        weatherView.delegate = self
         // Do any additional setup after loading the view.
     }
 //テスト
@@ -24,3 +26,8 @@ class WeatherViewController: UIViewController {
 
 }
 
+extension WeatherViewController: WeatherDelegate {
+    func reload() {
+        weatherModel?.reload(imageView: weatherView.weatherImageView)
+    }
+}
