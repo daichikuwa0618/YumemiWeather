@@ -9,6 +9,7 @@ import UIKit
 
 class WeatherView: UIView {
     
+    var delegate: WeatherDelegate?
     let stackViewForImageViewAndLabels = UIStackView()
     let weatherImageView = UIImageView()
     let stackViewForLabels = UIStackView()
@@ -105,5 +106,10 @@ class WeatherView: UIView {
     
     private func setupReloadButton() {
         reloadButton.setTitle("Reload", for: .normal)
+        reloadButton.addTarget(self, action: #selector(reload), for: .touchUpInside)
+    }
+    
+    @objc func reload() {
+        delegate?.reload()
     }
 }
