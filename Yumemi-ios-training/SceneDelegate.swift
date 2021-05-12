@@ -22,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             let initViewController = InitViewController()
             window.rootViewController = initViewController
-                
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -46,6 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
+        NotificationCenter.default.post(name: Notification.Name("enterForeground"), object: nil)
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }

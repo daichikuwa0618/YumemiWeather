@@ -19,8 +19,14 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherView.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(enterForeground), name: Notification.Name("enterForeground"), object: nil)
         // Do any additional setup after loading the view.
     }
+    
+    @objc func enterForeground() {
+        reload()
+    }
+    
 //テスト
     //ブランチ名を変更した(テスト)
 
@@ -34,3 +40,4 @@ extension WeatherViewController: WeatherDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
+
