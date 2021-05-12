@@ -24,13 +24,13 @@ struct WeatherModel {
         }
     }
     
-    func decode(data: Data) throws -> [String: Any]? {
-        try JSONSerialization.jsonObject(with: data) as? [String:Any]
+    func decode(data: Data) throws -> Weather {
+        try decoder.decode(Weather.self, from: data)
     }
-    
-    func changeDisplay(items: [String: Any]?, imageView: UIImageView, lowestLabel: UILabel, highestLabel: UILabel) {
-        lowestLabel.text = String(items?["min_temp"] as? Int ?? 0)
-        highestLabel.text = String(items?["max_temp"] as? Int ?? 0)
-        imageView.image = UIImage(named: items?["weather"] as? String ?? "")
+
+    func changeDisplay(items: Weather, imageView: UIImageView, lowestLabel: UILabel, highestLabel: UILabel) {
+        lowestLabel.text = String(items.min_temp)
+        highestLabel.text = String(items.max_temp)
+        imageView.image = UIImage(named: items.weather)
     }
 }
