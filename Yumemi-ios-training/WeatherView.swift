@@ -103,6 +103,7 @@ class WeatherView: UIView {
     
     private func setupCloseButton() {
         closeButton.setTitle("Close", for: .normal)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
     
     private func setupReloadButton() {
@@ -112,5 +113,9 @@ class WeatherView: UIView {
     
     @objc func reload() {
         delegate?.reload()
+    }
+    
+    @objc func close() {
+        delegate?.close()
     }
 }

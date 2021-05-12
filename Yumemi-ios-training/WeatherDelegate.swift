@@ -9,4 +9,5 @@ import Foundation
 
 protocol WeatherDelegate {
     func reload()
+    func close()
 }

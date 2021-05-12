@@ -30,4 +30,7 @@ extension WeatherViewController: WeatherDelegate {
     func reload() {
         weatherModel?.reload(imageView: weatherView.weatherImageView, controller: self, lowestLabel: weatherView.lowestTemperatureLabel, highestLabel: weatherView.highestTemperatureLabel)
     }
+    func close() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

@@ -33,4 +33,5 @@ struct WeatherModel {
         highestLabel.text = String(items.max_temp)
         imageView.image = UIImage(named: items.weather)
     }
+    
 }
