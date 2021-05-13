@@ -5,8 +5,6 @@
 //  Created by 大塚 周 on 2021/05/12.
 //
 
-import Foundation
-
 protocol WeatherDelegate {
-    func reload()
+    func reload() -> Dictionary<String, Any>
 }

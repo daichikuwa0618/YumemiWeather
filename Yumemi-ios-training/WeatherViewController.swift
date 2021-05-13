@@ -26,9 +26,18 @@ class WeatherViewController: UIViewController {
 
 }
 
+
 extension WeatherViewController: WeatherDelegate {
-    func reload() {
-        weatherModel?.reload(imageView: weatherView.weatherImageView)
+    func reload() -> Dictionary<String, Any> {
+        let weatherString = weatherModel?.reload()
+        switch weatherString {
+        case "sunny":
+            return ["weather": weatherString ?? "", "color": UIColor.red]
+        case "cloudy":
+            return ["weather": weatherString ?? "", "color": UIColor.gray]
+        default:
+            return ["weather": weatherString ?? "", "color": UIColor.blue]
+        }
     }
 }
 

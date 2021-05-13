@@ -110,6 +110,8 @@ class WeatherView: UIView {
     }
     
     @objc func reload() {
-        delegate?.reload()
+        let weatherData = delegate?.reload()
+        weatherImageView.image = UIImage(named: weatherData?["weather"] as? String ?? "")?.withRenderingMode(.alwaysTemplate)
+        weatherImageView.tintColor = weatherData?["color"] as? UIColor
     }
 }
