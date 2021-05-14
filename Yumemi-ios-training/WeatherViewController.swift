@@ -9,6 +9,7 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
+    var delegate: WeatherViewDataSource?
     private(set) var weatherView = WeatherView()
     var weatherModel: WeatherModel?
     
@@ -18,12 +19,12 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        weatherView.delegate = self
-        // Do any additional setup after loading the view.
+        delegate = self
+        weatherView.reloadButton.addTarget(self, action: #selector(reloadButtonTapped), for: .touchUpInside)
     }
-//テスト
-    //ブランチ名を変更した(テスト)
-
+    @objc func reloadButtonTapped() {
+        weatherView.changeDisplay(weatherViewState: reload())
+    }
 }
 
 
