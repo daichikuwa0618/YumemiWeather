@@ -27,16 +27,16 @@ class WeatherViewController: UIViewController {
 }
 
 
-extension WeatherViewController: WeatherDelegate {
-    func reload() -> Dictionary<String, Any> {
-        let weatherString = weatherModel?.reload()
+extension WeatherViewController: WeatherViewDataSource {
+    func reload() -> WeatherViewState? {
+        guard let weatherString = weatherModel?.reload() else { return nil }
         switch weatherString {
         case "sunny":
-            return ["weather": weatherString ?? "", "color": UIColor.red]
+            return WeatherViewState(weather: weatherString, color: .red)
         case "cloudy":
-            return ["weather": weatherString ?? "", "color": UIColor.gray]
+            return WeatherViewState(weather: weatherString, color: .gray)
         default:
-            return ["weather": weatherString ?? "", "color": UIColor.blue]
+            return WeatherViewState(weather: weatherString, color: .blue)
         }
     }
 }

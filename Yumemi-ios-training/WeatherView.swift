@@ -9,7 +9,7 @@ import UIKit
 
 class WeatherView: UIView {
     
-    var delegate: WeatherDelegate?
+    var delegate: WeatherViewDataSource?
     let stackViewForImageViewAndLabels = UIStackView()
     let weatherImageView = UIImageView()
     let stackViewForLabels = UIStackView()
@@ -110,8 +110,8 @@ class WeatherView: UIView {
     }
     
     @objc func reload() {
-        let weatherData = delegate?.reload()
-        weatherImageView.image = UIImage(named: weatherData?["weather"] as? String ?? "")?.withRenderingMode(.alwaysTemplate)
-        weatherImageView.tintColor = weatherData?["color"] as? UIColor
+        guard let weatherData = delegate?.reload() else { return }
+        weatherImageView.image = UIImage(named: weatherData.weather)?.withRenderingMode(.alwaysTemplate)
+        weatherImageView.tintColor = weatherData.color
     }
 }
