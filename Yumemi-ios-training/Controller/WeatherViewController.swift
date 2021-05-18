@@ -9,7 +9,6 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    var delegate: WeatherViewDataSource?
     private(set) var weatherView = WeatherView()
     var weatherModel: WeatherModel?
     
@@ -19,16 +18,11 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
         weatherView.reloadButton.addTarget(self, action: #selector(reloadButtonTapped), for: .touchUpInside)
     }
     @objc func reloadButtonTapped() {
         weatherView.changeDisplay(weatherViewState: reload())
     }
-}
-
-
-extension WeatherViewController: WeatherViewDataSource {
     func reload() -> WeatherViewState? {
         guard let weatherString = weatherModel?.reload() else { return nil }
         switch weatherString {
@@ -40,5 +34,6 @@ extension WeatherViewController: WeatherViewDataSource {
             return WeatherViewState(weather: weatherString, color: .blue)
         }
     }
+    
 }
 
