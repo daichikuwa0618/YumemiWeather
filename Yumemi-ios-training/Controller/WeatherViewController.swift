@@ -37,8 +37,10 @@ class WeatherViewController: UIViewController {
             return WeatherViewState(weather: weatherString, color: .red)
         case "cloudy":
             return WeatherViewState(weather: weatherString, color: .gray)
-        default:
+        case "rainy":
             return WeatherViewState(weather: weatherString, color: .blue)
+        default:
+            return nil
         }
     }
     
