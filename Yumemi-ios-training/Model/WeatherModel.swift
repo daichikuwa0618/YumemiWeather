@@ -8,7 +8,7 @@
 import YumemiWeather
 
 struct WeatherModel {
-    func reloading() -> WeatherViewState  {
+    func reloading() -> WeatherViewState {
         let weatherString = YumemiWeather.fetchWeather()
         let weather = Weather(rawValue: weatherString)!
         return WeatherViewState(weather: weather)
