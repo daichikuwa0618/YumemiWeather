@@ -42,9 +42,6 @@ class WeatherViewController: UIViewController {
                 message = "予期せぬエラーが発生しました"
             }
             let errorAlert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
-            let errorAction = UIAlertAction(title: "OK", style: .default)
-            errorAlert.addAction(errorAction)
-            present(errorAlert, animated: true, completion: nil)
         }
     }
 }

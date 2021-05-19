@@ -7,6 +7,7 @@
 
 import YumemiWeather
 
+
 struct WeatherModel {
     func reloading() -> Result<WeatherViewState, WeatherAppError> {
         do {
