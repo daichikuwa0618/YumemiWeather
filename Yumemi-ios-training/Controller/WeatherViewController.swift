@@ -10,7 +10,7 @@ import UIKit
 class WeatherViewController: UIViewController {
     
     private(set) var weatherView = WeatherView()
-    var weatherModel: WeatherModel?
+    var weatherModel: WeatherDataSource?
     
     override func loadView() {
         view = weatherView
