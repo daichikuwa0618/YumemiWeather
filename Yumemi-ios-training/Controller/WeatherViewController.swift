@@ -9,9 +9,9 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    private(set) var weatherView = WeatherView()
-    let weatherModel: WeatherDataSource
-    init(model: WeatherDataSource) {
+    let weatherView = WeatherView()
+    let weatherModel: WeatherModel
+    init(model: WeatherModel) {
         self.weatherModel = model
         super.init(nibName: nil, bundle: nil)
     }
