@@ -8,6 +8,7 @@
 import YumemiWeather
 import Foundation
 
+<<<<<<< HEAD
 struct WeatherModel {
     func reloading() -> WeatherViewState? {
         do {
@@ -21,6 +22,11 @@ struct WeatherModel {
         } catch {
             return nil
         }
+=======
+struct WeatherDataSource {
+    func reload() throws -> String  {
+        try YumemiWeather.fetchWeather(at: "{\"area\": \"tokyo\", \"date\": \"2020-04-01T12:00:00+09:00\" }")
+>>>>>>> acc2c8b... no message
     }
 }
 
