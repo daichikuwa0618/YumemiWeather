@@ -10,8 +10,15 @@ import UIKit
 class WeatherViewController: UIViewController {
     
     private(set) var weatherView = WeatherView()
-    var weatherModel: WeatherDataSource?
+    let weatherModel: WeatherDataSource
+    init(model: WeatherDataSource) {
+        self.weatherModel = model
+        super.init(nibName: nil, bundle: nil)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func loadView() {
         view = weatherView
     }
@@ -24,7 +31,7 @@ class WeatherViewController: UIViewController {
         weatherView.changeDisplay(weatherViewState: reload())
     }
     func reload() -> WeatherViewState? {
-        guard let weatherString = weatherModel?.reload() else { return nil }
+        let weatherString = weatherModel.reload()
         switch weatherString {
         case "sunny":
             return WeatherViewState(weather: weatherString, color: .red)
