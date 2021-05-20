@@ -7,6 +7,6 @@
 import UIKit
 
 struct WeatherViewState {
-    let weather: String
+    let weather: Weather
     let color: UIColor
 }

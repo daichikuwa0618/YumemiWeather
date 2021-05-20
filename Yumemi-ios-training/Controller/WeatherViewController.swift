@@ -25,24 +25,25 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        weatherView.reloadButton.addTarget(self, action: #selector(reloadButtonTapped), for: .touchUpInside)
+        weatherView.reloadButton.addTarget(self, action: #selector(reload(_:)), for: .touchUpInside)
     }
-    @objc func reloadButtonTapped() {
+    
+    @objc func reload(_ sender: UIButton) {
         weatherView.changeDisplay(weatherViewState: reload())
     }
-    func reload() -> WeatherViewState? {
-        let weatherString = weatherModel.reload()
+    func reload() -> WeatherViewState {
+        let weatherString = Weather(rawValue: weatherModel.reload())!
         switch weatherString {
-        case "sunny":
+        case .sunny:
             return WeatherViewState(weather: weatherString, color: .red)
-        case "cloudy":
+        case .cloudy:
             return WeatherViewState(weather: weatherString, color: .gray)
-        case "rainy":
+        case .rainy:
             return WeatherViewState(weather: weatherString, color: .blue)
-        default:
-            return nil
         }
     }
     
 }
+
+
 
