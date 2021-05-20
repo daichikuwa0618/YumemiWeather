@@ -8,7 +8,7 @@
 import YumemiWeather
 
 struct WeatherModel {
-    func reload() -> String  {
+    func reloading() -> String  {
         YumemiWeather.fetchWeather()
     }
 }
