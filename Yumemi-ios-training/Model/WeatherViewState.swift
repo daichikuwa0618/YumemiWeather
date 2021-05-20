@@ -9,4 +9,16 @@ import UIKit
 struct WeatherViewState {
     let weather: Weather
     let color: UIColor
+    
+    init(weather: Weather) {
+        self.weather = weather
+        switch weather {
+        case .sunny:
+            self.color = .red
+        case .cloudy:
+            self.color = .black
+        case .rainy:
+            self.color = .blue
+        }
+    }
 }

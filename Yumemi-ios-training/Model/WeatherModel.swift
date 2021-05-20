@@ -13,11 +13,11 @@ struct WeatherModel {
         let weather = Weather(rawValue: weatherString)!
         switch weather {
         case .sunny:
-            return WeatherViewState(weather: .sunny, color: .red)
+            return WeatherViewState(weather: .sunny)
         case .cloudy:
-            return WeatherViewState(weather: .cloudy, color: .gray)
+            return WeatherViewState(weather: .cloudy)
         case .rainy:
-            return WeatherViewState(weather: .rainy, color: .blue)
+            return WeatherViewState(weather: .rainy)
         }
     }
 }
