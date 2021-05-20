@@ -29,20 +29,8 @@ class WeatherViewController: UIViewController {
     }
     
     @objc func reload(_ sender: UIButton) {
-        weatherView.changeDisplay(weatherViewState: reloading())
+        weatherView.changeDisplay(weatherViewState: weatherModel.reloading())
     }
-    func reloading() -> WeatherViewState {
-        let weatherString = Weather(rawValue: weatherModel.reloading())!
-        switch weatherString {
-        case .sunny:
-            return WeatherViewState(weather: weatherString, color: .red)
-        case .cloudy:
-            return WeatherViewState(weather: weatherString, color: .gray)
-        case .rainy:
-            return WeatherViewState(weather: weatherString, color: .blue)
-        }
-    }
-    
 }
 
 
