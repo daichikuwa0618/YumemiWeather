@@ -14,6 +14,7 @@ class WeatherViewController: UIViewController {
     init(model: WeatherModel) {
         self.weatherModel = model
         super.init(nibName: nil, bundle: nil)
+        weatherView.delegateAboutButton = self
     }
     
     required init?(coder: NSCoder) {
@@ -29,9 +30,13 @@ class WeatherViewController: UIViewController {
     }
     
     @objc func reload(_ sender: UIButton) {
-        weatherView.changeDisplay(weatherViewState: weatherModel.reloading())
+        reloading()
     }
 }
 
-
+extension WeatherViewController: WeatherDelegate {
+    func reloading() {
+        weatherView.changeDisplay(weatherViewState: weatherModel.reloading())
+    }
+}
 
