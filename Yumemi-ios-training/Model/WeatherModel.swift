@@ -8,10 +8,21 @@
 import YumemiWeather
 
 struct WeatherModel {
-    func reloading() -> WeatherViewState {
-        let weatherString = YumemiWeather.fetchWeather()
-        let weather = Weather(rawValue: weatherString)!
-        return WeatherViewState(weather: weather)
+    func reloading() -> WeatherViewState? {
+        do {
+            let weatherString = try YumemiWeather.fetchWeather(at: "tokyo")
+            let weather = Weather(rawValue: weatherString)!
+            switch weather {
+            case .sunny:
+                return WeatherViewState(weather: .sunny)
+            case .cloudy:
+                return WeatherViewState(weather: .cloudy)
+            case .rainy:
+                return WeatherViewState(weather: .rainy)
+            }
+        } catch {
+            return nil
+        }
     }
 }
 
