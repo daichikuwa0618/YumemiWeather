@@ -108,8 +108,7 @@ class WeatherView: UIView {
         reloadButton.setTitle("Reload", for: .normal)
     }
     
-    func changeDisplay(weatherViewState: WeatherViewState?) {
-        guard let weatherViewState = weatherViewState else { return }
+    func changeDisplay(weatherViewState: WeatherViewState) {
         weatherImageView.image = UIImage(named: weatherViewState.weather.rawValue)?.withRenderingMode(.alwaysTemplate)
         weatherImageView.tintColor = weatherViewState.color
     }
