@@ -9,9 +9,13 @@ import UIKit
 struct WeatherViewState {
     let weather: Weather
     let color: UIColor
+    let lowestTemperature: Int
+    let highestTemperature: Int
     
-    init(weather: Weather) {
+    init(weather: Weather, lowestTemperature: Int, highestTemperature: Int) {
         self.weather = weather
+        self.lowestTemperature = lowestTemperature
+        self.highestTemperature = highestTemperature
         switch weather {
         case .sunny:
             self.color = .red
