@@ -22,44 +22,22 @@ class WeatherViewController: UIViewController {
     override func loadView() {
         view = weatherView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherView.reloadButton.addTarget(self, action: #selector(reload(_:)), for: .touchUpInside)
     }
     
     @objc func reload(_ sender: UIButton) {
-        
-    }
-}
-
-extension WeatherViewController: WeatherDelegate {
-    func reloading() {
->>>>>>> f8a0bcb... no message
-        if let state = weatherModel.reloading() {
-            weatherView.changeDisplay(weatherViewState: state)
-        } else {
-<<<<<<< HEAD
-=======
-    func reload() -> WeatherViewState? {
         do {
-            let weatherData = try weatherModel.reload().data(using: String.Encoding.utf8)!
-            let parsedData = try JSONSerialization.jsonObject(with: weatherData)
-            switch weatherString {
-            case "sunny":
-                return WeatherViewState(weather: weatherString, color: .red)
-            case "cloudy":
-                return WeatherViewState(weather: weatherString, color: .gray)
-            default:
-                return WeatherViewState(weather: weatherString, color: .blue)
+            if let state = weatherModel.reloading() {
+                weatherView.changeDisplay(weatherViewState: state)
+            } else {
+                let errorAlert = UIAlertController(title: "エラー", message: "エラーが発生しました", preferredStyle: .alert)
+                let errorAction = UIAlertAction(title: "OK", style: .default)
+                errorAlert.addAction(errorAction)
+                present(errorAlert, animated: true, completion: nil)
             }
-        } catch {
-=======
->>>>>>> 6f8c957... no message
-            let errorAlert = UIAlertController(title: "エラー", message: "エラーが発生しました", preferredStyle: .alert)
-            let errorAction = UIAlertAction(title: "OK", style: .default)
-            errorAlert.addAction(errorAction)
-            present(errorAlert, animated: true, completion: nil)
         }
     }
 }
