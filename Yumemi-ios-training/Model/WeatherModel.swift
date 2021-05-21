@@ -12,14 +12,7 @@ struct WeatherModel {
         do {
             let weatherString = try YumemiWeather.fetchWeather(at: "tokyo")
             let weather = Weather(rawValue: weatherString)!
-            switch weather {
-            case .sunny:
-                return WeatherViewState(weather: .sunny)
-            case .cloudy:
-                return WeatherViewState(weather: .cloudy)
-            case .rainy:
-                return WeatherViewState(weather: .rainy)
-            }
+            return WeatherViewState(weather: weather)
         } catch {
             return nil
         }
