@@ -29,6 +29,13 @@ class WeatherViewController: UIViewController {
     }
     
     @objc func reload(_ sender: UIButton) {
-        weatherView.changeDisplay(weatherViewState: weatherModel.reloading())
+        if let state = weatherModel.reloading() {
+            weatherView.changeDisplay(weatherViewState: state)
+        } else {
+            let errorAlert = UIAlertController(title: "エラー", message: "エラーが発生しました", preferredStyle: .alert)
+            let errorAction = UIAlertAction(title: "OK", style: .default)
+            errorAlert.addAction(errorAction)
+            present(errorAlert, animated: true, completion: nil)
+        }
     }
 }
