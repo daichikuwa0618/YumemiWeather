@@ -39,6 +39,7 @@ extension WeatherViewController: WeatherDelegate {
         if let state = weatherModel.reloading() {
             weatherView.changeDisplay(weatherViewState: state)
         } else {
+<<<<<<< HEAD
 =======
     func reload() -> WeatherViewState? {
         do {
@@ -53,6 +54,8 @@ extension WeatherViewController: WeatherDelegate {
                 return WeatherViewState(weather: weatherString, color: .blue)
             }
         } catch {
+=======
+>>>>>>> 6f8c957... no message
             let errorAlert = UIAlertController(title: "エラー", message: "エラーが発生しました", preferredStyle: .alert)
             let errorAction = UIAlertAction(title: "OK", style: .default)
             errorAlert.addAction(errorAction)
