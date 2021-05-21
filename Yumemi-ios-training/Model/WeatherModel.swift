@@ -7,12 +7,13 @@
 
 import YumemiWeather
 
-
 struct WeatherModel {
     func reloading() -> Result<WeatherViewState, WeatherAppError> {
         do {
-            let weatherString = try YumemiWeather.fetchWeather(at: "tokyo")
+            let weatherDataString = try YumemiWeather.fetchWeather("{\"area\": \"tokyo\", \"date\": \"2020-04-01T12:00:00+09:00\" }")
+            let weatherData = weatherDataString.data(using: String.Encoding.utf8)!
             guard let weather = Weather(rawValue: weatherString) else { fatalError("Weatherのイニシャライザに失敗") }
+            
             return .success(WeatherViewState(weather: weather))
         } catch let error as YumemiWeatherError {
             switch error {
