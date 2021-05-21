@@ -16,7 +16,6 @@ class WeatherView: UIView {
     let highestTemperatureLabel = UILabel()
     let closeButton = UIButton(type: .system)
     let reloadButton = UIButton(type: .system)
-    var delegateAboutButton: WeatherDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

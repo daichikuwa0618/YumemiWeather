@@ -16,7 +16,7 @@ struct WeatherViewState {
         case .sunny:
             self.color = .red
         case .cloudy:
-            self.color = .black
+            self.color = .gray
         case .rainy:
             self.color = .blue
         }

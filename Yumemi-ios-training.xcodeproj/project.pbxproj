@@ -17,7 +17,6 @@
 		D9B65FE2264E3208002E3578 /* WeatherViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B65FE1264E3208002E3578 /* WeatherViewState.swift */; };
 		D9BF7DD22644D75C00B62D63 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = D9BF7DD12644D75C00B62D63 /* YumemiWeather */; };
 		D9D4D31C2656825300372FD2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4D31B2656825300372FD2 /* Weather.swift */; };
-		D9D4D3232657302600372FD2 /* WeatherDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4D3222657302600372FD2 /* WeatherDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +31,6 @@
 		D9982542263B731000E373B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9B65FE1264E3208002E3578 /* WeatherViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewState.swift; sourceTree = "<group>"; };
 		D9D4D31B2656825300372FD2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		D9D4D3222657302600372FD2 /* WeatherDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +82,6 @@
 				D93DD7D4264B78A90068CA73 /* WeatherModel.swift */,
 				D9B65FE1264E3208002E3578 /* WeatherViewState.swift */,
 				D9D4D31B2656825300372FD2 /* Weather.swift */,
-				D9D4D3222657302600372FD2 /* WeatherDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,7 +180,6 @@
 				D9982539263B730F00E373B8 /* WeatherViewController.swift in Sources */,
 				D9982535263B730F00E373B8 /* AppDelegate.swift in Sources */,
 				D9982537263B730F00E373B8 /* SceneDelegate.swift in Sources */,
-				D9D4D3232657302600372FD2 /* WeatherDelegate.swift in Sources */,
 				D919B107263B9D320047898D /* WeatherView.swift in Sources */,
 				D93DD7D5264B78A90068CA73 /* WeatherModel.swift in Sources */,
 				D9B65FE2264E3208002E3578 /* WeatherViewState.swift in Sources */,
