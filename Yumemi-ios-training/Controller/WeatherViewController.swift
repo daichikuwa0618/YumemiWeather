@@ -29,15 +29,6 @@ class WeatherViewController: UIViewController {
     }
     
     @objc func reload(_ sender: UIButton) {
-<<<<<<< HEAD
-=======
-        reloading()
-    }
-}
-
-extension WeatherViewController: WeatherDelegate {
-    func reloading() {
->>>>>>> f8a0bcb... no message
         if let state = weatherModel.reloading() {
             weatherView.changeDisplay(weatherViewState: state)
         } else {
