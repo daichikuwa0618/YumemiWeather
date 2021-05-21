@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct WeatherData {
+struct WeatherData: Codable {
     let max_temp: Int
     let min_temp: Int
     let weather: String
