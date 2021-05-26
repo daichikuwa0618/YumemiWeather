@@ -23,17 +23,19 @@ class WeatherViewController: UIViewController {
     override func loadView() {
         view = weatherView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherView.reloadButton.addTarget(self, action: #selector(reload(_:)), for: .touchUpInside)
     }
     
     @objc func reload(_ sender: UIButton) {
-        if let state = weatherModel.reloading() {
+        let result = weatherModel.reloading()
+        switch result {
+        case .success(let state):
             weatherView.changeDisplay(weatherViewState: state)
-        } else {
-            let errorAlert = UIAlertController(title: "エラー", message: "エラーが発生しました", preferredStyle: .alert)
+        case .failure(let error):
+            let errorAlert = UIAlertController(title: "エラー", message: error.localizedDescription, preferredStyle: .alert)
             let errorAction = UIAlertAction(title: "OK", style: .default)
             errorAlert.addAction(errorAction)
             present(errorAlert, animated: true, completion: nil)

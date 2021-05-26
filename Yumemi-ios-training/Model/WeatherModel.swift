@@ -8,15 +8,15 @@
 import YumemiWeather
 
 struct WeatherModel {
-    func reloading() -> WeatherViewState? {
+    func reloading() -> Result<WeatherViewState, YumemiWeatherError> {
         do {
             let weatherString = try YumemiWeather.fetchWeather(at: "tokyo")
-            guard let weather = Weather(rawValue: weatherString) else {
-                fatalError("Weatherのイニシャライザに失敗")
-            }
-            return WeatherViewState(weather: weather)
+            guard let weather = Weather(rawValue: weatherString) else { fatalError("Weatherのイニシャライザに失敗") }
+            return .success(WeatherViewState(weather: weather))
+        } catch let error as YumemiWeatherError {
+            return .failure(error)
         } catch {
-            return nil
+            fatalError("想定外のエラーが発生しました")
         }
     }
 }
