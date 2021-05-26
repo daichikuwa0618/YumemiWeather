@@ -108,7 +108,7 @@ class WeatherView: UIView {
     }
     
     func changeDisplay(weatherViewState: WeatherViewState) {
-        weatherImageView.image = UIImage(named: weatherViewState.weather.rawValue)?.withRenderingMode(.alwaysTemplate)
+        weatherImageView.image = UIImage(named: weatherViewState.weather.rawValue)
         weatherImageView.tintColor = weatherViewState.color
     }
 }
