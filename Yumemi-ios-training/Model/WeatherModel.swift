@@ -11,7 +11,9 @@ struct WeatherModel {
     func reloading() -> WeatherViewState? {
         do {
             let weatherString = try YumemiWeather.fetchWeather(at: "tokyo")
-            let weather = Weather(rawValue: weatherString)!
+            guard let weather = Weather(rawValue: weatherString) else {
+                fatalError("Weatherのイニシャライザに失敗")
+            }
             return WeatherViewState(weather: weather)
         } catch {
             return nil
