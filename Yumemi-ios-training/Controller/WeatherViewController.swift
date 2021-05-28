@@ -29,12 +29,12 @@ class WeatherViewController: UIViewController {
         weatherView.reloadButton.addTarget(self, action: #selector(reload(_:)), for: .touchUpInside)
     }
     @objc func reload(_ sender: UIButton) {
-        var message = ""
         let result = weatherModel.reloading()
         switch result {
         case .success(let state):
             weatherView.changeDisplay(weatherViewState: state)
         case .failure(let error):
+            var message = ""
             switch error {
             case .invalidParameterError:
                 message = "不適切な値が設定されました"
