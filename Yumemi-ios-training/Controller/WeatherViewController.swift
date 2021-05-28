@@ -31,11 +31,20 @@ class WeatherViewController: UIViewController {
     
     @objc func reload(_ sender: UIButton) {
         let result = weatherModel.reloading()
+        var message = ""
         switch result {
         case .success(let state):
             weatherView.changeDisplay(weatherViewState: state)
         case .failure(let error):
-            let errorAlert = UIAlertController(title: "エラー", message: error.localizedDescription, preferredStyle: .alert)
+            switch error {
+            case .invalidParameterError:
+                print(error.localizedDescription)
+                message = "不適切な値を入力しています"
+            case .unknownError:
+                print(error.localizedDescription)
+                message = "予期せぬエラーが発生しました"
+            }
+            let errorAlert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
             let errorAction = UIAlertAction(title: "OK", style: .default)
             errorAlert.addAction(errorAction)
             present(errorAlert, animated: true, completion: nil)
