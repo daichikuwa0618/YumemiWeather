@@ -18,6 +18,13 @@ struct WeatherModel {
             let lowestTemperature = items["min_temp"] as! Int
             let highestTemperature = items["max_temp"] as! Int
             return .success(WeatherViewState(weather: weather, lowestTemperature: lowestTemperature, highestTemperature: highestTemperature))
+        } catch let error as YumemiWeatherError {
+            switch error {
+            case .invalidParameterError:
+                return .failure(.invalidParameterError)
+            case .unknownError:
+                return .failure(.unknownError)
+            }
         } catch {
             fatalError("想定外のエラーが発生しました")
         }
