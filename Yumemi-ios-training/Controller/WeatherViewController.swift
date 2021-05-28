@@ -28,14 +28,20 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         weatherView.reloadButton.addTarget(self, action: #selector(reload(_:)), for: .touchUpInside)
     }
-    
     @objc func reload(_ sender: UIButton) {
+        var message = ""
         let result = weatherModel.reloading()
-        let message = weatherModel.errorMessage
         switch result {
         case .success(let state):
             weatherView.changeDisplay(weatherViewState: state)
-        case .failure:
+        case .failure(let error):
+            
+            if case let WeatherAppError.invalidParameterError(code) = error {
+                message = code
+            } else if case let WeatherAppError.unknownError(code) = error {
+                message = code
+            }
+            
             let errorAlert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
             let errorAction = UIAlertAction(title: "OK", style: .default)
             errorAlert.addAction(errorAction)
