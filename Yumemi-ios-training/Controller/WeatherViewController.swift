@@ -10,7 +10,7 @@ import UIKit
 class WeatherViewController: UIViewController {
     
     let weatherView = WeatherView()
-    let weatherModel: WeatherModel
+    var weatherModel: WeatherModel
     init(model: WeatherModel) {
         self.weatherModel = model
         super.init(nibName: nil, bundle: nil)
@@ -31,19 +31,11 @@ class WeatherViewController: UIViewController {
     
     @objc func reload(_ sender: UIButton) {
         let result = weatherModel.reloading()
-        var message = ""
+        let message = weatherModel.errorMessage
         switch result {
         case .success(let state):
             weatherView.changeDisplay(weatherViewState: state)
-        case .failure(let error):
-            switch error {
-            case .invalidParameterError:
-                print(error.localizedDescription)
-                message = "不適切な値を入力しています"
-            case .unknownError:
-                print(error.localizedDescription)
-                message = "予期せぬエラーが発生しました"
-            }
+        case .failure:
             let errorAlert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
             let errorAction = UIAlertAction(title: "OK", style: .default)
             errorAlert.addAction(errorAction)
