@@ -8,11 +8,21 @@
 import YumemiWeather
 
 struct WeatherModel {
-    func reloading() -> WeatherViewState  {
-        let weatherString = YumemiWeather.fetchWeather()
-        let weather = Weather(rawValue: weatherString)!
-        return WeatherViewState(weather: weather)
+    func reloading() -> Result<WeatherViewState, WeatherAppError> {
+        do {
+            let weatherString = try YumemiWeather.fetchWeather(at: "tokyo")
+            guard let weather = Weather(rawValue: weatherString) else { fatalError("Weatherのイニシャライザに失敗") }
+            return .success(WeatherViewState(weather: weather))
+        } catch let error as YumemiWeatherError {
+            switch error {
+            case .invalidParameterError:
+                return .failure(.invalidParameterError)
+            case .unknownError:
+                return .failure(.unknownError)
+            }
+        } catch {
+            fatalError("想定外のエラーが発生しました")
+        }
     }
 }
-
 
