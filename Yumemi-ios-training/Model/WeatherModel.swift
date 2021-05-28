@@ -7,11 +7,6 @@
 
 import YumemiWeather
 
-enum WeatherAppError: Error {
-    case invalidParameterError(String)
-    case unknownError(String)
-}
-
 struct WeatherModel {
     func reloading() -> Result<WeatherViewState, WeatherAppError> {
         do {
@@ -21,9 +16,9 @@ struct WeatherModel {
         } catch let error as YumemiWeatherError {
             switch error {
             case .invalidParameterError:
-                return .failure(.invalidParameterError("不適切な値が設定されています"))
+                return .failure(.invalidParameterError)
             case .unknownError:
-                return .failure(.unknownError("予期せぬエラーが発生しました"))
+                return .failure(.unknownError)
             }
         } catch {
             fatalError("想定外のエラーが発生しました")

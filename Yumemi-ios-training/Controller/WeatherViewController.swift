@@ -35,13 +35,12 @@ class WeatherViewController: UIViewController {
         case .success(let state):
             weatherView.changeDisplay(weatherViewState: state)
         case .failure(let error):
-            
-            if case let WeatherAppError.invalidParameterError(code) = error {
-                message = code
-            } else if case let WeatherAppError.unknownError(code) = error {
-                message = code
+            switch error {
+            case .invalidParameterError:
+                message = "不適切な値が設定されました"
+            case .unknownError:
+                message = "予期せぬエラーが発生しました"
             }
-            
             let errorAlert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
             let errorAction = UIAlertAction(title: "OK", style: .default)
             errorAlert.addAction(errorAction)
