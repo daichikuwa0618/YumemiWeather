@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: hkusu/slack-integration@v1
         with:
-          slack-token: ${{ secrets.SLACK_TOKEN }}
+          slack-token: ${{ secrets.SLACK_INTEGRATION_TOKEN }}
           channel: ${{ secrets.SLACK_CHANNEL }}
           subscribe-pulls: true
           subscribe-issues: true
