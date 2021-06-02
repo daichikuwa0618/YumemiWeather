@@ -18,7 +18,6 @@
 		D9B65FE2264E3208002E3578 /* WeatherViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B65FE1264E3208002E3578 /* WeatherViewState.swift */; };
 		D9BF7DD22644D75C00B62D63 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = D9BF7DD12644D75C00B62D63 /* YumemiWeather */; };
 		D9D4D31C2656825300372FD2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D4D31B2656825300372FD2 /* Weather.swift */; };
-		D9DA6EE22654DCB800E80C3E /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DA6EE12654DCB800E80C3E /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +33,6 @@
 		D9B059A42660CB7700566FCA /* WeatherAppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppError.swift; sourceTree = "<group>"; };
 		D9B65FE1264E3208002E3578 /* WeatherViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewState.swift; sourceTree = "<group>"; };
 		D9D4D31B2656825300372FD2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		D9DA6EE12654DCB800E80C3E /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +85,6 @@
 				D9B65FE1264E3208002E3578 /* WeatherViewState.swift */,
 				D9D4D31B2656825300372FD2 /* Weather.swift */,
 				D9B059A42660CB7700566FCA /* WeatherAppError.swift */,
-				D9DA6EE12654DCB800E80C3E /* WeatherData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,7 +182,6 @@
 			files = (
 				D9982539263B730F00E373B8 /* WeatherViewController.swift in Sources */,
 				D9982535263B730F00E373B8 /* AppDelegate.swift in Sources */,
-				D9DA6EE22654DCB800E80C3E /* WeatherData.swift in Sources */,
 				D9982537263B730F00E373B8 /* SceneDelegate.swift in Sources */,
 				D9B059A52660CB7700566FCA /* WeatherAppError.swift in Sources */,
 				D919B107263B9D320047898D /* WeatherView.swift in Sources */,
