@@ -10,14 +10,11 @@ import Foundation
 
 struct WeatherModel {
     func reloading() -> Result<WeatherViewState, WeatherAppError> {
+        var weatherDataString: String!
+        var weatherDictionary: [String: Any]?
+        
         do {
-            let weatherDataString = try YumemiWeather.fetchWeather("{\"area\": \"tokyo\", \"date\": \"2020-04-01T12:00:00+09:00\" }")
-            let weatherData = weatherDataString.data(using: String.Encoding.utf8)!
-            let weatherDictionary = try JSONSerialization.jsonObject(with: weatherData) as! Dictionary<String, Any>
-            let weather = Weather(rawValue: weatherDictionary["weather"] as! String)!
-            let lowestTemperature = weatherDictionary["min_temp"] as! Int
-            let highestTemperature = weatherDictionary["max_temp"] as! Int
-            return .success(WeatherViewState(weather: weather, lowestTemperature: lowestTemperature, highestTemperature: highestTemperature))
+            weatherDataString = try YumemiWeather.fetchWeather("{\"area\": \"tokyo\", \"date\": \"2020-04-01T12:00:00+09:00\" }")
         } catch let error as YumemiWeatherError {
             switch error {
             case .invalidParameterError:
@@ -28,6 +25,16 @@ struct WeatherModel {
         } catch {
             fatalError("想定外のエラーが発生しました")
         }
+        let weatherData = weatherDataString.data(using: String.Encoding.utf8)!
+        do {
+            weatherDictionary = try JSONSerialization.jsonObject(with: weatherData) as? Dictionary<String, Any>
+        } catch {
+            fatalError("想定外のエラーが発生しました")
+        }
+        let weather = Weather(rawValue: weatherDictionary!["weather"] as! String)!
+        let lowestTemperature = weatherDictionary!["min_temp"] as! Int
+        let highestTemperature = weatherDictionary!["max_temp"] as! Int
+        return .success(WeatherViewState(weather: weather, lowestTemperature: lowestTemperature, highestTemperature: highestTemperature))
     }
 }
 
