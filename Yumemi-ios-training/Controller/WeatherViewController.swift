@@ -41,7 +41,7 @@ class WeatherViewController: UIViewController {
             case .unknownError:
                 message = "予期せぬエラーが発生しました"
             case .jsonMappingError:
-                message = "データのエンコードに失敗しました"
+                message = "データの復元に失敗しました"
             }
             let errorAlert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
             let errorAction = UIAlertAction(title: "OK", style: .default)
