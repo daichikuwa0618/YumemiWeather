@@ -86,10 +86,7 @@
 				D93DD7D4264B78A90068CA73 /* WeatherModel.swift */,
 				D9B65FE1264E3208002E3578 /* WeatherViewState.swift */,
 				D9D4D31B2656825300372FD2 /* Weather.swift */,
-//<<<<<<< HEAD
 				D9B059A42660CB7700566FCA /* WeatherAppError.swift */,
-//=======
-//>>>>>>> 98e5f1c... ファイル名を変更した。
 				D9DA6EE12654DCB800E80C3E /* WeatherData.swift */,
 			);
 			path = Model;
