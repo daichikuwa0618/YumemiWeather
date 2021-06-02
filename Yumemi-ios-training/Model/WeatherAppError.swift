@@ -8,4 +8,5 @@
 enum WeatherAppError: Error {
     case invalidParameterError
     case unknownError
+    case jsonMappingError
 }

@@ -29,7 +29,7 @@ struct WeatherModel {
         do {
             weatherDictionary = try JSONSerialization.jsonObject(with: weatherData) as? Dictionary<String, Any>
         } catch {
-            fatalError("想定外のエラーが発生しました")
+            return .failure(.jsonMappingError)
         }
         let weather = Weather(rawValue: weatherDictionary!["weather"] as! String)!
         let lowestTemperature = weatherDictionary!["min_temp"] as! Int
